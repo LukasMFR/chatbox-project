@@ -157,7 +157,7 @@ button:active {
         width: 100%;
         padding: 15px;
         margin: 15px;
-        height: 100vh;
+        height: calc(100vh - 30px);
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -168,7 +168,9 @@ button:active {
     }
 
     .chat-messages {
-        height: calc(100% - 200px);
+        height: auto;
+        flex-grow: 1;
+        overflow-y: auto;
         margin-bottom: 10px;
     }
 
@@ -198,7 +200,7 @@ button:active {
         width: 100%;
         padding: 10px;
         margin: 10px;
-        height: 100vh;
+        height: calc(100vh - 20px);
         display: flex;
         flex-direction: column;
         justify-content: space-between;
@@ -209,7 +211,9 @@ button:active {
     }
 
     .chat-messages {
-        height: calc(100% - 200px);
+        height: auto;
+        flex-grow: 1;
+        overflow-y: auto;
         margin-bottom: 10px;
     }
 
