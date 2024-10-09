@@ -11,6 +11,7 @@ body {
     justify-content: center;
     align-items: center;
     height: 100vh;
+    padding: 20px;
 }
 
 .chatbox {
@@ -141,5 +142,56 @@ button:active {
 
     button:active {
         background-color: #005bb5;
+    }
+}
+
+/* Optimisation mobile */
+@media (max-width: 768px) {
+    .chatbox {
+        width: 100%;
+        padding: 15px;
+    }
+
+    h1 {
+        font-size: 20px;
+    }
+
+    .chat-messages {
+        height: 300px;
+    }
+
+    .chat-input {
+        flex-direction: column;
+    }
+
+    .input-name,
+    .input-message {
+        width: 100%;
+        margin-bottom: 10px;
+    }
+
+    button {
+        width: 100%;
+        padding: 10px;
+    }
+}
+
+@media (max-width: 480px) {
+    .chatbox {
+        width: 100%;
+        padding: 10px;
+    }
+
+    h1 {
+        font-size: 18px;
+    }
+
+    .chat-messages {
+        height: 250px;
+    }
+
+    button {
+        padding: 8px;
+        font-size: 14px;
     }
 }
