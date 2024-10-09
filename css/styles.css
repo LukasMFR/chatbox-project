@@ -15,7 +15,6 @@ body {
 
 .chatbox {
     width: 800px;
-    /* Augmentation de la taille */
     border-radius: 12px;
     box-shadow: 0 4px 15px rgba(0, 0, 0, 0.1);
     background-color: #ffffff;
@@ -34,7 +33,6 @@ h1 {
 .chat-messages {
     width: 100%;
     height: 400px;
-    /* Augmentation de la taille */
     padding: 15px;
     background-color: #f9f9f9;
     border: 1px solid #d2d2d7;
@@ -69,7 +67,6 @@ h1 {
 .input-name:focus,
 .input-message:focus {
     border-color: #0071e3;
-    /* Couleur bleue sobre d'Apple */
 }
 
 .send-button {
@@ -96,4 +93,53 @@ button:hover {
 
 button:active {
     background-color: #003e7e;
+}
+
+/* DARK MODE */
+@media (prefers-color-scheme: dark) {
+    body {
+        background-color: #1c1c1e;
+    }
+
+    .chatbox {
+        background-color: #2c2c2e;
+        box-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+    }
+
+    h1 {
+        color: #f5f5f7;
+    }
+
+    .chat-messages {
+        background-color: #3a3a3c;
+        border: 1px solid #505050;
+    }
+
+    .chat-messages p {
+        color: #e5e5e7;
+    }
+
+    .input-name,
+    .input-message {
+        background-color: #48484a;
+        border: 1px solid #606060;
+        color: #e5e5e7;
+    }
+
+    .input-name:focus,
+    .input-message:focus {
+        border-color: #0a84ff;
+    }
+
+    button {
+        background-color: #0a84ff;
+    }
+
+    button:hover {
+        background-color: #007aff;
+    }
+
+    button:active {
+        background-color: #005bb5;
+    }
 }
