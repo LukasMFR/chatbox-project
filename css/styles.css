@@ -147,9 +147,20 @@ button:active {
 
 /* Optimisation mobile */
 @media (max-width: 768px) {
+    body {
+        padding: 0;
+        height: auto;
+    }
+
     .chatbox {
         width: 100%;
         padding: 15px;
+        margin: 0;
+        height: 100vh;
+        /* Utiliser toute la hauteur */
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
     }
 
     h1 {
@@ -157,7 +168,9 @@ button:active {
     }
 
     .chat-messages {
-        height: 300px;
+        height: calc(100% - 200px);
+        /* Laisse assez de place pour le titre et les champs d'entrée */
+        margin-bottom: 10px;
     }
 
     .chat-input {
@@ -177,9 +190,19 @@ button:active {
 }
 
 @media (max-width: 480px) {
+    body {
+        padding: 0;
+        height: auto;
+    }
+
     .chatbox {
         width: 100%;
         padding: 10px;
+        margin: 0;
+        height: 100vh;
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
     }
 
     h1 {
@@ -187,7 +210,8 @@ button:active {
     }
 
     .chat-messages {
-        height: 250px;
+        height: calc(100% - 200px);
+        margin-bottom: 10px;
     }
 
     button {
