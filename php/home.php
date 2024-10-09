@@ -21,7 +21,11 @@ $messages = $stmt->fetchAll();
         <h1>Chattez'en direct! Chatbox</h1>
         <div class="chat-messages">
             <?php foreach ($messages as $message): ?>
-                <p><?= $message['timestamp'] ?> - <strong><?= htmlspecialchars($message['name']) ?></strong>:
+                <?php
+                // Utilisation de la fonction pour formater la date
+                $formattedDate = formatDateToFrench($message['timestamp']);
+                ?>
+                <p><?= $formattedDate ?> - <strong><?= htmlspecialchars($message['name']) ?></strong>:
                     <?= htmlspecialchars($message['message']) ?>
                 </p>
             <?php endforeach; ?>
