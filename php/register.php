@@ -10,7 +10,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
     $stmt = $pdo->prepare("SELECT * FROM users WHERE mail = ?");
     $stmt->execute([$mail]);
-    
+
     if ($stmt->rowCount() > 0) {
         echo "<p>Un compte avec cet e-mail existe déjà.</p>";
     } else {
@@ -24,12 +24,14 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 
 <!DOCTYPE html>
 <html lang="fr">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Inscription</title>
     <link rel="stylesheet" href="../css/styles.css">
 </head>
+
 <body>
     <h2>Inscription</h2>
     <form method="POST" action="">
@@ -41,4 +43,5 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     </form>
     <p>Déjà un compte ? <a href="login.php">Connectez-vous ici</a></p>
 </body>
+
 </html>
