@@ -11,9 +11,13 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $user = $stmt->fetch();
 
     if ($user) {
+        // Enregistrement de toutes les informations dans la session
         $_SESSION['user_id'] = $user['id'];
         $_SESSION['user_nom'] = $user['nom'];
+        $_SESSION['user_prenom'] = $user['prenom'];
+        $_SESSION['user_mail'] = $user['mail'];
         $_SESSION['user_niveau'] = $user['niveau'];
+
         header("Location: home.php");
         exit;
     } else {

@@ -25,6 +25,19 @@ $messages = $stmt->fetchAll();
 
 <body>
     <div class="chatbox">
+        <!-- Affichage des informations utilisateur et bouton de déconnexion -->
+        <div class="user-info">
+            <p>
+                Connecté en tant que :
+                <strong><?= htmlspecialchars($_SESSION['user_prenom']) ?>
+                    <?= htmlspecialchars($_SESSION['user_nom']) ?></strong>
+                (<?= htmlspecialchars($_SESSION['user_niveau']) ?>)
+                <br>
+                <span class="user-email"><?= htmlspecialchars($_SESSION['user_mail']) ?></span>
+            </p>
+            <a href="logout.php" class="logout-button">Se déconnecter</a>
+        </div>
+
         <h1>Chattez'en direct! Chatbox</h1>
         <div class="chat-messages">
             <?php foreach ($messages as $message): ?>
