@@ -97,6 +97,13 @@ button:active {
     background-color: #003e7e;
 }
 
+.alert {
+    color: #d9534f;
+    font-weight: bold;
+    text-align: center;
+    margin-top: 20px;
+}
+
 /* DARK MODE */
 @media (prefers-color-scheme: dark) {
     body {

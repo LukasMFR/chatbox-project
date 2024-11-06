@@ -1,5 +1,12 @@
 <?php
 include 'db.php';
+session_start();
+
+// Vérifie si l'utilisateur est connecté
+if (!isset($_SESSION['user_id'])) {
+    header("Location: login.php");
+    exit;
+}
 
 // Récupération des messages depuis la base de données
 $stmt = $pdo->query("SELECT * FROM messages ORDER BY timestamp DESC");
