@@ -12,12 +12,11 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->execute([$mail]);
 
     if ($stmt->rowCount() > 0) {
-        echo "<p>Un compte avec cet e-mail existe déjà.</p>";
+        echo "<p class='alert'>Un compte avec cet e-mail existe déjà.</p>";
     } else {
         $stmt = $pdo->prepare("INSERT INTO users (nom, prenom, mail, mdp, niveau) VALUES (?, ?, ?, ?, ?)");
         $stmt->execute([$nom, $prenom, $mail, $mdp, $niveau]);
-        echo "<p>Inscription réussie. Vous pouvez maintenant vous connecter.</p>";
-        echo '<p><a href="login.php">Connectez-vous ici</a></p>';
+        echo "<p class='alert'>Inscription réussie. Vous pouvez maintenant vous connecter.</p>";
     }
 }
 ?>
@@ -33,15 +32,17 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 </head>
 
 <body>
-    <h2>Inscription</h2>
-    <form method="POST" action="">
-        <input type="text" name="nom" placeholder="Nom" required><br>
-        <input type="text" name="prenom" placeholder="Prénom" required><br>
-        <input type="email" name="mail" placeholder="E-mail" required><br>
-        <input type="password" name="mdp" placeholder="Mot de passe" required><br>
-        <button type="submit">S'inscrire</button>
-    </form>
-    <p>Déjà un compte ? <a href="login.php">Connectez-vous ici</a></p>
+    <div class="form-container">
+        <h2>Inscription</h2>
+        <form method="POST" action="">
+            <input type="text" name="nom" placeholder="Nom" required>
+            <input type="text" name="prenom" placeholder="Prénom" required>
+            <input type="email" name="mail" placeholder="E-mail" required>
+            <input type="password" name="mdp" placeholder="Mot de passe" required>
+            <button type="submit">S'inscrire</button>
+        </form>
+        <p>Déjà un compte ? <a href="login.php">Connectez-vous ici</a></p>
+    </div>
 </body>
 
 </html>
