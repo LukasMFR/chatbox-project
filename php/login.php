@@ -2,6 +2,8 @@
 include 'db.php';
 session_start();
 
+$error_message = "";
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $mail = $_POST['mail'];
     $mdp = sha1($_POST['mdp']);
@@ -19,7 +21,7 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         header("Location: home.php");
         exit;
     } else {
-        echo "<p class='alert'>E-mail ou mot de passe incorrect.</p>";
+        $error_message = "E-mail ou mot de passe incorrect.";
     }
 }
 ?>
@@ -37,6 +39,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <body>
     <div class="form-container">
         <h2>Connexion</h2>
+        <?php if ($error_message): ?>
+            <p class="alert"><?= $error_message ?></p>
+        <?php endif; ?>
         <form method="POST" action="">
             <input type="email" name="mail" placeholder="E-mail" required>
             <input type="password" name="mdp" placeholder="Mot de passe" required>

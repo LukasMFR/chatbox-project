@@ -1,6 +1,8 @@
 <?php
 include 'db.php';
 
+$error_message = "";
+
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $nom = $_POST['nom'];
     $prenom = $_POST['prenom'];
@@ -12,11 +14,12 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     $stmt->execute([$mail]);
 
     if ($stmt->rowCount() > 0) {
-        echo "<p class='alert'>Un compte avec cet e-mail existe déjà.</p>";
+        $error_message = "Un compte avec cet e-mail existe déjà.";
     } else {
         $stmt = $pdo->prepare("INSERT INTO users (nom, prenom, mail, mdp, niveau) VALUES (?, ?, ?, ?, ?)");
         $stmt->execute([$nom, $prenom, $mail, $mdp, $niveau]);
         echo "<p class='alert'>Inscription réussie. Vous pouvez maintenant vous connecter.</p>";
+        echo '<p><a href="login.php">Connectez-vous ici</a></p>';
     }
 }
 ?>
@@ -34,6 +37,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
 <body>
     <div class="form-container">
         <h2>Inscription</h2>
+        <?php if ($error_message): ?>
+            <p class="alert"><?= $error_message ?></p>
+        <?php endif; ?>
         <form method="POST" action="">
             <input type="text" name="nom" placeholder="Nom" required>
             <input type="text" name="prenom" placeholder="Prénom" required>
