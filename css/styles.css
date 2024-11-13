@@ -51,13 +51,12 @@ h1 {
 
 .chat-input {
     display: flex;
-    justify-content: space-between;
     margin-top: 20px;
 }
 
-.input-name,
+/* .input-name, */
 .input-message {
-    width: 48%;
+    width: 100%;
     padding: 12px;
     border: 1px solid #d2d2d7;
     border-radius: 8px;
@@ -66,7 +65,7 @@ h1 {
     transition: border-color 0.3s ease;
 }
 
-.input-name:focus,
+/* .input-name:focus, */
 .input-message:focus {
     border-color: #0071e3;
 }
