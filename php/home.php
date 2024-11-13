@@ -52,7 +52,6 @@ $messages = $stmt->fetchAll();
         </div>
         <form action="send_message.php" method="post">
             <div class="chat-input">
-                <input type="text" name="name" placeholder="Entrez votre nom" class="input-name" required>
                 <input type="text" name="message" placeholder="Entrez un message" class="input-message" required>
             </div>
             <div class="send-button">

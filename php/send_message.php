@@ -1,8 +1,10 @@
 <?php
 include 'db.php';
+session_start();
 
 if ($_SERVER['REQUEST_METHOD'] == 'POST') {
-    $name = $_POST['name'];
+    // Récupère le prénom et le nom de l'utilisateur connecté
+    $name = $_SESSION['user_prenom'] . ' ' . $_SESSION['user_nom'];
     $message = $_POST['message'];
 
     if (!empty($name) && !empty($message)) {
