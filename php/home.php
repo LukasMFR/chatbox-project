@@ -82,6 +82,12 @@ if (isset($_SESSION['success_message'])) {
         // Disparaît automatiquement après 5 secondes
         setTimeout(closeBanner, 5000);
     </script>
+    <script>
+        // Place le curseur dans l'input de message dès que la page est chargée
+        document.addEventListener("DOMContentLoaded", function () {
+            document.querySelector(".input-message").focus();
+        });
+    </script>
 </body>
 
 </html>
