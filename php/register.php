@@ -1,5 +1,6 @@
 <?php
 include 'db.php';
+session_start();
 
 $error_message = "";
 
@@ -16,10 +17,23 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
     if ($stmt->rowCount() > 0) {
         $error_message = "Un compte avec cet e-mail existe déjà.";
     } else {
+        // Insérer le nouvel utilisateur dans la base de données
         $stmt = $pdo->prepare("INSERT INTO users (nom, prenom, mail, mdp, niveau) VALUES (?, ?, ?, ?, ?)");
         $stmt->execute([$nom, $prenom, $mail, $mdp, $niveau]);
-        echo "<p class='alert'>Inscription réussie. Vous pouvez maintenant vous connecter.</p>";
-        echo '<p><a href="login.php">Connectez-vous ici</a></p>';
+
+        // Récupérer l'ID du nouvel utilisateur
+        $user_id = $pdo->lastInsertId();
+
+        // Créer la session pour l'utilisateur nouvellement inscrit
+        $_SESSION['user_id'] = $user_id;
+        $_SESSION['user_nom'] = $nom;
+        $_SESSION['user_prenom'] = $prenom;
+        $_SESSION['user_mail'] = $mail;
+        $_SESSION['user_niveau'] = $niveau;
+
+        // Rediriger vers la page d'accueil
+        header("Location: home.php");
+        exit;
     }
 }
 ?>
