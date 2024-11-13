@@ -31,7 +31,9 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['user_mail'] = $mail;
         $_SESSION['user_niveau'] = $niveau;
 
-        // Rediriger vers la page d'accueil
+        // Définir un message de succès
+        $_SESSION['success_message'] = "Inscription réussie ! Bienvenue, " . htmlspecialchars($prenom) . ".";
+
         header("Location: home.php");
         exit;
     }

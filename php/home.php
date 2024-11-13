@@ -11,6 +11,13 @@ if (!isset($_SESSION['user_id'])) {
 // Récupération des messages depuis la base de données
 $stmt = $pdo->query("SELECT * FROM messages ORDER BY timestamp DESC");
 $messages = $stmt->fetchAll();
+
+// Récupère le message de succès et le supprime de la session
+$success_message = "";
+if (isset($_SESSION['success_message'])) {
+    $success_message = $_SESSION['success_message'];
+    unset($_SESSION['success_message']);
+}
 ?>
 
 <!DOCTYPE html>
@@ -24,6 +31,13 @@ $messages = $stmt->fetchAll();
 </head>
 
 <body>
+    <?php if ($success_message): ?>
+        <div class="success-banner" id="successBanner">
+            <?= htmlspecialchars($success_message) ?>
+            <span class="close-btn" onclick="closeBanner()">×</span>
+        </div>
+    <?php endif; ?>
+
     <div class="chatbox">
         <!-- Affichage des informations utilisateur et bouton de déconnexion -->
         <div class="user-info">
@@ -59,6 +73,15 @@ $messages = $stmt->fetchAll();
             </div>
         </form>
     </div>
+
+    <script>
+        function closeBanner() {
+            document.getElementById("successBanner").style.display = "none";
+        }
+
+        // Disparaît automatiquement après 5 secondes
+        setTimeout(closeBanner, 5000);
+    </script>
 </body>
 
 </html>

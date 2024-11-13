@@ -18,6 +18,10 @@ if ($_SERVER['REQUEST_METHOD'] == 'POST') {
         $_SESSION['user_prenom'] = $user['prenom'];
         $_SESSION['user_mail'] = $user['mail'];
         $_SESSION['user_niveau'] = $user['niveau'];
+
+        // Définir un message de succès
+        $_SESSION['success_message'] = "Connexion réussie ! Bienvenue, " . htmlspecialchars($user['prenom']) . ".";
+
         header("Location: home.php");
         exit;
     } else {

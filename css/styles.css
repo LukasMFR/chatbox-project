@@ -205,6 +205,33 @@ button:active {
     text-decoration: underline;
 }
 
+/* Styles pour la bannière de succès */
+.success-banner {
+    background-color: #4caf50;
+    color: white;
+    padding: 10px 20px;
+    position: fixed;
+    top: 20px;
+    left: 50%;
+    transform: translateX(-50%);
+    max-width: 80%;
+    border-radius: 8px;
+    text-align: center;
+    font-size: 16px;
+    z-index: 1000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+}
+
+.success-banner .close-btn {
+    margin-left: 15px;
+    cursor: pointer;
+    font-weight: bold;
+    color: #ffffff;
+}
+
 /* DARK MODE */
 @media (prefers-color-scheme: dark) {
     body {
